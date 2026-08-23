@@ -4,12 +4,12 @@ sidebar_position: 1
 
 # Introduction
 
-ScagRPC is a Roblox module that allows developers to communicate with [ScagJPT](https://store.steampowered.com/app/4721090/ScagJPT/), a desktop pet from Steam.
+ScagRPC is a Roblox module that allows developers to communicate with [ScagJPT](https://store.steampowered.com/app/4721090/ScagJPT/), a desktop pet application on Steam.
 
-You can incorporate ScagJPT into your Roblox game by using ScagRPC, allowing Scag to react to in-game events. ScagJPT does this by reading your Roblox logs on your local machine, similar to how [Bloxstrap](https://bloxstraplabs.com/) does it.
+By using this, you can bridge Roblox and ScagJPT easily, allowing Scag to react to in-game events.
 
 ## Downloads
 
 ScagRPC is available on:
-- [GitHub Repository](https://github.com)
-- [Roblox Marketplace](https://www.roblox.com/library/13815518713/ScagRPC)
+- [GitHub Repository](https://github.com/The-Axolotl-Sun/scag-rpc)
+- [Roblox Marketplace](https://www.roblox.com/library/1234567890/ScagRPC)

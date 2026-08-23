@@ -1,8 +1,12 @@
-title = "ScagRPC"  # From Git
+gitRepoUrl = "https://github.com/The-Axolotl-Sun/scag-rpc"
+gitSourceBranch = "main"
 
-gitSourceBranch = "master"
 changelog = true
-classOrder = ["ScagRPC", "ScagCommands", "Presets"]
+classOrder = ["ScagRPC", "Presets"]
+
+[home]
+enabled = true
+includeReadme = true
 
 [docusaurus]
 onBrokenLinks = "throw"
