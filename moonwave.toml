@@ -1,0 +1,13 @@
+title = "ScagRPC"  # From Git
+
+gitSourceBranch = "master"
+changelog = true
+classOrder = ["ScagRPC", "ScagCommands", "Presets"]
+
+[docusaurus]
+onBrokenLinks = "throw"
+onBrokenMarkdownLinks = "warn"
+
+[footer]
+style = "dark"
+copyright = "Copyright © 2026 The Axolotl Sun. Built with Moonwave and Docusaurus"
