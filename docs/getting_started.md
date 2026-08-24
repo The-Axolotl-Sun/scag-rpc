@@ -8,9 +8,7 @@ In order to use ScagRPC, you need to have ScagJPT installed on your computer. Yo
 
 ## Testing in Roblox Studio
 
-When testing on Roblox Studio, make sure:
-1. ScagJPT is running *before* you open Studio
-2. The "Read Studio logs instead" setting is **enabled** in ScagJPT's settings. This lets it read your Roblox Studio logs, instead of your Roblox Player. You can find this setting in the "Developer" tab.
+When testing in Roblox Studio, make sure the "Read Studio logs instead" setting is **enabled** in ScagJPT's settings. This allows your Roblox Studio logs to be read, instead of the Roblox Player. You can find this setting in the "Developer" tab.
 
 ![ScagJPT Setting](./usage/settings-studio.webp)
 :::warning
