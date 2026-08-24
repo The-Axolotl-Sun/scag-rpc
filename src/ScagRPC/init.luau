@@ -91,7 +91,7 @@ end
 	ScagRPC.Fling(Vector2.new(10, 10))
 
 	-- Fling in a random direction
-	ScagRPC.Commands.Fling()
+	ScagRPC.Fling()
 	```
 ]=]
 function ScagRPC.Fling(velocity: Vector2?): ()
