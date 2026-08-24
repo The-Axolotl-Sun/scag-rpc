@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[4],{4410:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/The-Axolotl-Sun/scag-rpc/blob/main","baseUrl":"/","classOrder":["ScagRPC","Presets"],"apiCategories":[]}')}}]);
