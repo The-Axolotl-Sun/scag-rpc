@@ -5,15 +5,13 @@ gitSourceBranch = "main"
 changelog = true
 classOrder = ["ScagRPC", "Presets"]
 
-[docusaurus]
-url = "https://scag.theaxolotlsun.com/"
-baseUrl = "/"
-
 [home]
 enabled = true
 includeReadme = true
 
 [docusaurus]
+url = "https://scag.theaxolotlsun.com/"
+baseUrl = "/"
 onBrokenLinks = "throw"
 onBrokenMarkdownLinks = "warn"
 
