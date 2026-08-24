@@ -12,7 +12,7 @@ When testing in Roblox Studio, make sure the "Read Studio logs instead" setting 
 
 ![ScagJPT Setting](./usage/settings-studio.webp)
 :::warning
-When you want to use ScagRPC in a published game, don't forget to **disable** the "Read Studio logs instead" setting!
+When you want to use ScagJPT in a published game, don't forget to **disable** the "Read Studio logs instead" setting!
 :::
 
 ## Setting up ScagRPC
