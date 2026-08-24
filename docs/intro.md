@@ -12,4 +12,4 @@ By using this, you can bridge Roblox and ScagJPT easily, allowing Scag to react 
 
 ScagRPC is available on:
 - [GitHub Repository](https://github.com/The-Axolotl-Sun/scag-rpc)
-- [Roblox Marketplace](https://www.roblox.com/library/1234567890/ScagRPC)
+- [Roblox Marketplace](https://create.roblox.com/store/asset/93250431502664/ScagRPC)

@@ -17,7 +17,7 @@ All ScagJPT print calls follow this format:
 | Section | Description |
 |------|-------------|
 | `[SJPT]:` | The prefix that ScagJPT will listen for |
-| `command` | The action you want ScagJPT to perform (e.g. `say`). You can view all commands [here](https://the-axolotl-sun.github.io/scag-rpc/api/ScagRPC#Commands). |
+| `command` | The action you want ScagJPT to perform (e.g. `say`). You can view all commands [here](https://scag.theaxolotlsun.com/api/ScagRPC#Commands). |
 | `data` | The data to pass along with the command. |
 
 :::warning
