@@ -17,6 +17,6 @@ When you want to use ScagJPT in a published game, don't forget to **disable** th
 
 ## Setting up ScagRPC
 
-When you download ScagRPC from the [Roblox Marketplace](https://www.roblox.com/library/13815518713/ScagRPC), you get a ModuleScript that other scripts can require from. You can place this ModuleScript anywhere, but it's recommended to be under `ReplicatedStorage`.
+When you download ScagRPC from the [Roblox Marketplace](https://create.roblox.com/store/asset/93250431502664/ScagRPC), you get a ModuleScript that other scripts can require from. You can place this ModuleScript anywhere, but it's recommended to be under `ReplicatedStorage`.
 
 ![Module Location](./usage/module-location.webp)
