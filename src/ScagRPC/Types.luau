@@ -4,6 +4,6 @@
 	The list of commands that can be sent to ScagJPT.
 ]=]
 export type Commands = "say" | "say_preset" | "set_image_preset" | "play_audio_preset" | "error" | 
-"fling" | "hit"
+"fling" | "hit" | "walk_to_position"
 
 return {}
