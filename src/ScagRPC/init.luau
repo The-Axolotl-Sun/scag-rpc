@@ -189,4 +189,30 @@ function ScagRPC.Fling(velocity: Vector2?): string
 	return Output("fling", tostring(constructed.X), tostring(constructed.Y))
 end
 
+--[=[
+	@within ScagRPC
+
+	Provides a waypoint for Scag to walk to in a given position, or randomly if no position is provided. 
+	Provided positions are scaled based on the user's screen size.
+
+	```lua
+	-- Set a waypoint in a specific position
+	ScagRPC.SetWaypoint(Vector2.new(10, 10), 300)
+
+	-- Set a waypoint in a random position
+	ScagRPC.SetWaypoint()
+	```
+]=]
+function ScagRPC.WalkToPosition(position: Vector2?, speed: number?): string
+	local constructed: Vector2 = Vector2.zero
+	if not position then
+		--this will be scaled in Godot to the user's actual screen size
+		constructed = Vector2.new(Rand:NextInteger(0, 1920), Rand:NextInteger(0, 1080))
+	else
+		constructed = position
+	end
+	
+	return Output("walk_to_position", tostring(constructed.X), tostring(constructed.Y), tostring(speed or 300))
+end
+
 return ScagRPC
