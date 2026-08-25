@@ -3,8 +3,8 @@
 
 -- Modules
 
-const Presets = require(script.Presets)
-const Types = require(script.Types)
+const Presets = require("@self/Presets")
+const Types = require("@self/Types")
 
 -- Constants
 
