@@ -3,15 +3,15 @@
 
 -- Modules
 
-const Presets = require("@self/Presets")
-const Types = require("@self/Types")
+const Presets = require(script.Presets)
+const Types = require(script.Types)
 
 -- Constants
 
 const SCAG_TAG = "[SJPT]:"
 const Rand = Random.new()
 
--- Local methods
+-- Local functions
 
 local function FormatCommand(command: Types.Commands, ...: string): string
 	local output = `{SCAG_TAG}{command}`
@@ -22,9 +22,10 @@ local function FormatCommand(command: Types.Commands, ...: string): string
 	return output
 end
 
-local function Output(command: Types.Commands, ...: string): ()
+local function Output(command: Types.Commands, ...: string): string
 	local formatted = FormatCommand(command, ...)
 	print(formatted)
+	return formatted
 end
 
 -- Class
@@ -55,8 +56,8 @@ local ScagRPC = {}
 	ScagRPC.Say("this is [b]SOOOO[/b] cool!")
 	```
 ]=]
-function ScagRPC.Say(text: string): ()
-	Output("say", text)
+function ScagRPC.Say(text: string): string
+	return Output("say", text)
 end
 
 --[=[
@@ -77,8 +78,89 @@ end
 	Humanoid.Died:Connect(OnDeath)
 	```
 ]=]
-function ScagRPC.SayPreset(presetId: string): ()
-	Output("say_preset", (Presets.Say :: {[string]: string})[presetId])
+function ScagRPC.SayPreset(presetId: string): string
+	assert((Presets.Say :: {[string]: string})[presetId], Output("error", `Invalid SayPreset ID: {presetId}`))
+	return Output("say_preset", (Presets.Say :: {[string]: string})[presetId])
+end
+
+--[=[
+	@private
+	@within ScagRPC
+
+	Used internally by The Axolotl Sun to set preset images located within ScagJPTs files.
+
+	While not intended for public use, you can view [Presets.SetImage] to see the available preset image names.
+
+	```lua
+	local makos = workspace:FindFirstChild("NotMakos")
+
+	if makos then
+		ScagRPC.SetImagePreset(Presets.SetImage.makos)
+	end
+	```
+]=]
+function ScagRPC.SetImagePreset(presetId: string): string
+	assert((Presets.SetImage :: {[string]: string})[presetId], Output("error", `Invalid SetImagePreset ID: {presetId}`))
+	return Output("set_image_preset", (Presets.SetImage :: {[string]: string})[presetId])
+end
+
+--[=[
+	@private
+	@within ScagRPC
+
+	Used internally by The Axolotl Sun to set preset images located within ScagJPTs files.
+
+	While not intended for public use, you can view [Presets.SetImage] to see the available preset image names.
+
+	```lua
+	local makos = workspace:FindFirstChild("NotMakos")
+
+	if makos then
+		ScagRPC.SetImagePreset(Presets.SetImage.makos)
+	end
+	```
+]=]
+function ScagRPC.PlayAudioPreset(presetId: string): string
+	assert((Presets.PlayAudio :: {[string]: string})[presetId], Output("error", `Invalid PlayAudioPreset ID: {presetId}`))
+	return Output("play_audio_preset", (Presets.PlayAudio :: {[string]: string})[presetId])
+end
+
+--[=[
+	@within ScagRPC
+
+	Sends an error to Scag to display.
+
+	```lua
+	ScagRPC.Error("This is an error!")
+	```
+]=]
+function ScagRPC.Error(text: string): string
+	return Output("error", text)
+end
+
+--[=[
+	@within ScagRPC
+
+	Hits Scag in a given position, or randomly if no position is provided. 
+	Provided positions are scaled and offset based on Scag's current size and location on screen.
+
+	```lua
+	-- Hit in a specific position
+	ScagRPC.Hit(Vector2.new(10, 10))
+
+	-- Hit in a random position
+	ScagRPC.Hit()
+	```
+]=]
+function ScagRPC.Hit(position: Vector2?): string
+	local constructed: Vector2 = Vector2.zero
+	if not position then
+		constructed = Vector2.new(Rand:NextInteger(0, 100), Rand:NextInteger(0, 200))
+	else
+		constructed = position
+	end
+
+	return Output("hit", tostring(constructed.X), tostring(constructed.Y))
 end
 
 --[=[
@@ -94,7 +176,7 @@ end
 	ScagRPC.Fling()
 	```
 ]=]
-function ScagRPC.Fling(velocity: Vector2?): ()
+function ScagRPC.Fling(velocity: Vector2?): string
 	local constructed: Vector2 = Vector2.zero
 	if not velocity then
 		const force = Rand:NextInteger(2, 6)
@@ -104,7 +186,7 @@ function ScagRPC.Fling(velocity: Vector2?): ()
 		constructed = velocity
 	end
 
-	Output("fling", tostring(constructed.X), tostring(constructed.Y))
+	return Output("fling", tostring(constructed.X), tostring(constructed.Y))
 end
 
 return ScagRPC
