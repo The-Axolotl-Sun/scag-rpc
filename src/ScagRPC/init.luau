@@ -168,15 +168,15 @@ end
 --[=[
 	@within ScagRPC
 
-	Provides a waypoint for Scag to walk to in a given position, or randomly if no position is provided. 
+	Provides a position for Scag to walk to. A random position is set if none is provided.
 	Provided positions are scaled based on the user's screen size.
 
 	```lua
-	-- Set a waypoint in a specific position
-	ScagRPC.SetWaypoint(Vector2.new(10, 10), 300)
+	-- Set a specific position for Scag to walk to
+	ScagRPC.WalkToPosition(Vector2.new(10, 10), 300)
 
-	-- Set a waypoint in a random position
-	ScagRPC.SetWaypoint()
+	-- Set a random position for Scag to walk to
+	ScagRPC.WalkToPosition()
 	```
 ]=]
 function ScagRPC.WalkToPosition(position: Vector2?, speed: number?): string
