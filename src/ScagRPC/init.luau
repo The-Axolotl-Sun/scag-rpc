@@ -128,25 +128,14 @@ end
 --[=[
 	@within ScagRPC
 
-	Hits Scag in a given position, or randomly if no position is provided. 
-	Provided positions are scaled and offset based on Scag's current size and location on screen.
+	Hits Scag in a random position. 
 
 	```lua
-	-- Hit in a specific position
-	ScagRPC.Hit(Vector2.new(10, 10))
-
-	-- Hit in a random position
+	-- Hit Scag in a random position
 	ScagRPC.Hit()
 	```
 ]=]
-function ScagRPC.Hit(position: Vector2?): string
-	local constructed: Vector2 = Vector2.zero
-	if not position then
-		constructed = Vector2.new(Rand:NextInteger(0, 100), Rand:NextInteger(0, 200))
-	else
-		constructed = position
-	end
-
+function ScagRPC.Hit(): string
 	return Output("hit", tostring(constructed.X), tostring(constructed.Y))
 end
 
