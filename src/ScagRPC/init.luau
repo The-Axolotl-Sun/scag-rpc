@@ -136,7 +136,7 @@ end
 	```
 ]=]
 function ScagRPC.Hit(): string
-	return Output("hit", tostring(constructed.X), tostring(constructed.Y))
+	return Output("hit")
 end
 
 --[=[
