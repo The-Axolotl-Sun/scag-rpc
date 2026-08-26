@@ -79,7 +79,7 @@ end
 	```
 ]=]
 function ScagRPC.SayPreset(presetId: string): string
-	assert((Presets.Say :: {[string]: string})[presetId], Output("error", `Invalid SayPreset ID: {presetId}`))
+	assert((Presets.Say :: {[string]: string})[presetId], Output("say", `Invalid SayPreset ID: {presetId}`))
 	return Output("say_preset", (Presets.Say :: {[string]: string})[presetId])
 end
 
@@ -100,7 +100,7 @@ end
 	```
 ]=]
 function ScagRPC.SetImagePreset(presetId: string): string
-	assert((Presets.SetImage :: {[string]: string})[presetId], Output("error", `Invalid SetImagePreset ID: {presetId}`))
+	assert((Presets.SetImage :: {[string]: string})[presetId], Output("say", `Invalid SetImagePreset ID: {presetId}`))
 	return Output("set_image_preset", (Presets.SetImage :: {[string]: string})[presetId])
 end
 
@@ -121,21 +121,8 @@ end
 	```
 ]=]
 function ScagRPC.PlayAudioPreset(presetId: string): string
-	assert((Presets.PlayAudio :: {[string]: string})[presetId], Output("error", `Invalid PlayAudioPreset ID: {presetId}`))
+	assert((Presets.PlayAudio :: {[string]: string})[presetId], Output("say", `Invalid PlayAudioPreset ID: {presetId}`))
 	return Output("play_audio_preset", (Presets.PlayAudio :: {[string]: string})[presetId])
-end
-
---[=[
-	@within ScagRPC
-
-	Sends an error to Scag to display.
-
-	```lua
-	ScagRPC.Error("This is an error!")
-	```
-]=]
-function ScagRPC.Error(text: string): string
-	return Output("error", text)
 end
 
 --[=[
