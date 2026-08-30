@@ -11,7 +11,7 @@ const Types = require("@self/Types")
 const SCAG_TAG = "[SJPT]:"
 const Rand = Random.new()
 
--- Local methods
+-- Local functions
 
 local function FormatCommand(command: Types.Commands, ...: string): string
 	local output = `{SCAG_TAG}{command}`
@@ -22,9 +22,10 @@ local function FormatCommand(command: Types.Commands, ...: string): string
 	return output
 end
 
-local function Output(command: Types.Commands, ...: string): ()
+local function Output(command: Types.Commands, ...: string): string
 	local formatted = FormatCommand(command, ...)
 	print(formatted)
+	return formatted
 end
 
 -- Class
@@ -55,8 +56,8 @@ local ScagRPC = {}
 	ScagRPC.Say("this is [b]SOOOO[/b] cool!")
 	```
 ]=]
-function ScagRPC.Say(text: string): ()
-	Output("say", text)
+function ScagRPC.Say(text: string): string
+	return Output("say", text)
 end
 
 --[=[
@@ -77,8 +78,65 @@ end
 	Humanoid.Died:Connect(OnDeath)
 	```
 ]=]
-function ScagRPC.SayPreset(presetId: string): ()
-	Output("say_preset", (Presets.Say :: {[string]: string})[presetId])
+function ScagRPC.SayPreset(presetId: string): string
+	assert((Presets.Say :: {[string]: string})[presetId], Output("say", `Invalid SayPreset ID: {presetId}`))
+	return Output("say_preset", (Presets.Say :: {[string]: string})[presetId])
+end
+
+--[=[
+	@private
+	@within ScagRPC
+
+	Used internally by The Axolotl Sun to set preset images located within ScagJPTs files.
+
+	While not intended for public use, you can view [Presets.SetImage] to see the available preset image names.
+
+	```lua
+	local makos = workspace:FindFirstChild("NotMakos")
+
+	if makos then
+		ScagRPC.SetImagePreset(Presets.SetImage.makos)
+	end
+	```
+]=]
+function ScagRPC.SetImagePreset(presetId: string): string
+	assert((Presets.SetImage :: {[string]: string})[presetId], Output("say", `Invalid SetImagePreset ID: {presetId}`))
+	return Output("set_image_preset", (Presets.SetImage :: {[string]: string})[presetId])
+end
+
+--[=[
+	@private
+	@within ScagRPC
+
+	Used internally by The Axolotl Sun to set preset images located within ScagJPTs files.
+
+	While not intended for public use, you can view [Presets.SetImage] to see the available preset image names.
+
+	```lua
+	local makos = workspace:FindFirstChild("NotMakos")
+
+	if makos then
+		ScagRPC.SetImagePreset(Presets.SetImage.makos)
+	end
+	```
+]=]
+function ScagRPC.PlayAudioPreset(presetId: string): string
+	assert((Presets.PlayAudio :: {[string]: string})[presetId], Output("say", `Invalid PlayAudioPreset ID: {presetId}`))
+	return Output("play_audio_preset", (Presets.PlayAudio :: {[string]: string})[presetId])
+end
+
+--[=[
+	@within ScagRPC
+
+	Hits Scag in a random position. 
+
+	```lua
+	-- Hit Scag in a random position
+	ScagRPC.Hit()
+	```
+]=]
+function ScagRPC.Hit(): string
+	return Output("hit")
 end
 
 --[=[
@@ -94,7 +152,7 @@ end
 	ScagRPC.Fling()
 	```
 ]=]
-function ScagRPC.Fling(velocity: Vector2?): ()
+function ScagRPC.Fling(velocity: Vector2?): string
 	local constructed: Vector2 = Vector2.zero
 	if not velocity then
 		const force = Rand:NextInteger(2, 6)
@@ -104,7 +162,33 @@ function ScagRPC.Fling(velocity: Vector2?): ()
 		constructed = velocity
 	end
 
-	Output("fling", tostring(constructed.X), tostring(constructed.Y))
+	return Output("fling", tostring(constructed.X), tostring(constructed.Y))
+end
+
+--[=[
+	@within ScagRPC
+
+	Provides a position for Scag to walk to based on screen scale. A random position is set if none is provided.
+	Provided positions are scaled based on the user's screen size in Godot.
+
+	```lua
+	-- Set a specific position for Scag to walk to (center of the screen).
+	ScagRPC.WalkToPosition(Vector2.new(0.5, 0.5), 300)
+
+	-- Set a random position for Scag to walk to
+	ScagRPC.WalkToPosition()
+	```
+]=]
+function ScagRPC.WalkToPosition(position: Vector2?, speed: number?): string
+	local constructed: Vector2 = Vector2.zero
+	if not position then
+		--this will be scaled in Godot to the user's actual screen size
+		constructed = Vector2.new(Rand:NextNumber(), Rand:NextNumber())
+	else
+		constructed = position
+	end
+	
+	return Output("walk_to_position", tostring(constructed.X), tostring(constructed.Y), tostring(speed or 300))
 end
 
 return ScagRPC
