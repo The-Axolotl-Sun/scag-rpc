@@ -168,12 +168,12 @@ end
 --[=[
 	@within ScagRPC
 
-	Provides a position for Scag to walk to. A random position is set if none is provided.
-	Provided positions are scaled based on the user's screen size.
+	Provides a position for Scag to walk to based on screen scale. A random position is set if none is provided.
+	Provided positions are scaled based on the user's screen size in Godot.
 
 	```lua
-	-- Set a specific position for Scag to walk to
-	ScagRPC.WalkToPosition(Vector2.new(10, 10), 300)
+	-- Set a specific position for Scag to walk to (center of the screen).
+	ScagRPC.WalkToPosition(Vector2.new(0.5, 0.5), 300)
 
 	-- Set a random position for Scag to walk to
 	ScagRPC.WalkToPosition()
@@ -183,7 +183,7 @@ function ScagRPC.WalkToPosition(position: Vector2?, speed: number?): string
 	local constructed: Vector2 = Vector2.zero
 	if not position then
 		--this will be scaled in Godot to the user's actual screen size
-		constructed = Vector2.new(Rand:NextInteger(0, 1920), Rand:NextInteger(0, 1080))
+		constructed = Vector2.new(Rand:NextNumber(), Rand:NextNumber())
 	else
 		constructed = position
 	end
